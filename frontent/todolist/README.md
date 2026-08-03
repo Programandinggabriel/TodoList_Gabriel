@@ -1,19 +1,44 @@
-## Available Scripts
+# Frontend - Todo List
 
-In the project directory, you can run:
+Aplicación cliente desarrollada con **React** para interactuar con la API de Todo List.
 
-### `npm start`
+## 🚀 Tecnologías
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* React
+* JavaScript
+* CSS
+* Fetch API o Axios
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📦 Instalación
 
-### `npm run build`
+```bash
+npm install
+```
 
-### `npm run eject`
+## ▶️ Ejecutar
 
-### Deployment
+```bash
+npm start
+```
 
-### `npm run build` fails to minify
+o, si utilizas Vite:
+
+```bash
+npm run dev
+```
+
+## Configuración
+
+Si el backend se ejecuta en otro puerto, configura la URL de la API según corresponda.
+
+Ejemplo:
+
+```javascript
+const API_URL = "http://localhost:3000";
+```
+
+## Conexión con el backend
+
+El frontend consume la API REST proporcionada por el proyecto ubicado en la carpeta `back`.
+
+Asegúrate de iniciar primero el servidor antes de ejecutar la aplicación React.
