@@ -1,6 +1,8 @@
 const express = require('express')
 const morgan = require('morgan')
 const routes = require('./routes')
+const errorHandler = require('./middleware/errorHandler')
+const errorNotFound = require('./middleware/notFound')
 
 require('dotenv').config()
 
@@ -14,6 +16,9 @@ app.use(morgan('dev'))
 routes.forEach((r) => {
     app.use(r.path, r.routes)
 })
+
+app.use(errorNotFound) //Caso no existe ruta
+app.use(errorHandler)
 
 
 app.listen(process.env.PORT, () => {

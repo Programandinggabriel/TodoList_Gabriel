@@ -5,35 +5,34 @@ const get = async() => {
     return rows
 }
 
-const create = async(todo) => {
-    
+const create = async(title) => {
     const { rows } = await db.query(
-        `INSERT INTO todos (title)
-         VALUES($1)
-         RETURNING *`,
-         [todo.title]
+        `INSERT INTO todos (title) VALUES ($1) RETURNING *`,
+         [title]
     )
     return rows[0];
 }
 
-const update = async (id, todo) => {
-
+const update = async (id, title, completed) => {
     const { rows } = await db.query(
-        `UPDATE todos
-         SET title=$1
-         WHERE id=$2
+        `UPDATE todos 
+            SET title=$1,
+                completed=$2
+         WHERE id=$3
          RETURNING *`,
-        [todo.title, id]
+        [title, completed, id]
     );
 
     return rows[0];
 };
 
 const remove = async (id) => {
-    await db.query(
-        "DELETE FROM todos WHERE id=$1",
+    const { rowCount } = await db.query(
+        "DELETE FROM todos WHERE id=$1 RETURNING *",
         [id]
-    ) 
+    )
+    
+    return rowCount
 }
 
 module.exports = {
