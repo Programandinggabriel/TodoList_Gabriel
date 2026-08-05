@@ -1,7 +1,7 @@
 const db = require('../config/db')
 
 const get = async() => {
-    const { rows } = await db.query("SELECT * FROM todos");
+    const { rows } = await db.query("SELECT * FROM todos ORDER BY title");
     return rows
 }
 

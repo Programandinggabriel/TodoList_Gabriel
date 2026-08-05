@@ -16,16 +16,13 @@ const createTodo = async (todo) => {
 }
 
 const updateTodo = async (id, todo) => {
-    if (!todo.title){
+    if (typeof(todo.title) === 'undefined'){
         throw new Error('El titulo de la tarea es requerido')
-    }else if (todo.title.length < 10){
-        throw new Error('El titulo de la tarea debe ser mayor a 10 caracteres');
     }
-    
-    if (!todo.completed){
+    if (typeof(todo.completed) === 'undefined'){
         throw new Error('El estado completado de la tarea es requerido')
     }
-
+    
     const updatedTodo = await todoModel.update(id, todo.title, todo.completed)
     return updatedTodo
 }

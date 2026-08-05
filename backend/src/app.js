@@ -1,5 +1,6 @@
 const express = require('express')
 const morgan = require('morgan')
+const cors = require('cors')
 const routes = require('./routes')
 const errorHandler = require('./middleware/errorHandler')
 const errorNotFound = require('./middleware/notFound')
@@ -11,6 +12,7 @@ const app = express()
 //Middleware
 app.use(express.json())
 app.use(morgan('dev'))
+app.use(cors())
 
 //Routes
 routes.forEach((r) => {
