@@ -4,7 +4,7 @@ import { api } from "../services/axios";
 function FormTodo({ getTodos }){
     const [ formData, setFormData] = useState({todoTitle: ''});
 
-    const setTodoTile = (title) =>  {
+    const setTodoTitle = (title) =>  {
         setFormData({todoTitle: title})
     }
 
@@ -12,27 +12,38 @@ function FormTodo({ getTodos }){
         api.post('/todo', {
             title: form.todoTitle
         })
-        .then((response) => getTodos())
-        .catch((error) => console.log(error))
+        .then((response) => {
+            getTodos()
+            setTodoTitle('')
+        })
+        .catch((error) => {
+            console.log(error)
+            alert(error.response.data.message)
+        })
     }
 
     return (
-        <form onSubmit={(e) => e.preventDefault()}className="d-flex justify-content-center align-items-center mb-4">
+        <form onSubmit={(e) => e.preventDefault()} className="d-flex justify-content-center align-items-center mb-4">
             <div data-mdb-input-init className="form-outline flex-fill">
                 <input 
                     type="text" 
-                    id="form3" 
-                    className="form-control form-control-lg" 
-                    onChange={(e) => setTodoTile(e.target.value)}
+                    value={formData.todoTitle}
+                    id="form3"
+                    className="form-control form-control-lg bg-dark text-white" 
+                    onChange={(e) => setTodoTitle(e.target.value)}
                 />
-                <label className="form-label" htmlFor="form3">¿Que necesitas para hoy?</label>
+                <label className="form-label" htmlFor="form3">
+                    Escribe tu tarea...
+                </label>
             </div>
             <button 
-                type="button" 
+                type="submit" 
                 data-mdb-button-init data-mdb-ripple-init 
                 className="btn btn-primary btn-lg ms-2"
                 onClick={() => sendTodo(formData)}
-            >Agregar</button>
+            >
+                <i class="bi bi-database-fill-check" style={{ fontSize: '2rem' }}></i>
+            </button>
         </form>
     )
 }

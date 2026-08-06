@@ -7,10 +7,13 @@ const getTodos = async() => {
 }
 
 const createTodo = async (todo) => {
-    if (!todo.title){
+    if (typeof(todo.title) === 'undefined'){
         throw new Error('El titulo de la tarea es requerido')
     }
-    
+    if (todo.title.trim() === ''){
+        throw new Error('El titulo de la tarea no puede estar vacío')
+    }
+
     const newTodo = await todoModel.create(todo.title)
     return newTodo
 }
@@ -18,6 +21,9 @@ const createTodo = async (todo) => {
 const updateTodo = async (id, todo) => {
     if (typeof(todo.title) === 'undefined'){
         throw new Error('El titulo de la tarea es requerido')
+    }
+    if (todo.title.trim() === ''){
+        throw new Error('El titulo de la tarea no puede estar vacío')
     }
     if (typeof(todo.completed) === 'undefined'){
         throw new Error('El estado completado de la tarea es requerido')

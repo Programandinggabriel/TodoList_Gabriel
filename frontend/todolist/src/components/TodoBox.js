@@ -18,7 +18,7 @@ function TodoBox(){
     
     return (
         <div className="col col-xl-10">
-            <div className="card" style={{borderRadius: '15px'}}>
+            <div className="card bg-dark text-white" style={{borderRadius: '15px'}}>
                 <div className="card-body p-5">
                     <h6 className="mb-3">Todo list Gabriel</h6>
                     <FormTodo getTodos={getTodos}/>
