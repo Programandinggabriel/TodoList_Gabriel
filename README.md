@@ -38,20 +38,20 @@ Clona el repositorio:
 
 ```bash
 git clone <URL_DEL_REPOSITORIO>
-cd todo-list
+cd TodoList_Gabriel
 ```
 
 ### 1. Backend
 
 ```bash
-cd back
+cd backend
 npm install
 ```
 
 ### 2. Frontend
 
 ```bash
-cd ../front
+cd ../frontend/todolist
 npm install
 ```
 
@@ -74,7 +74,7 @@ http://localhost:5000
 En otra terminal:
 
 ```bash
-cd front
+cd frontend/todolist
 npm start
 ```
 
